@@ -10,5 +10,5 @@ def train_arima(df):
     
     pred = model_fit.predict(start=0, end=len(df) - 1)
     
-    print("🔮 ARIMA predictions shape:", pred.shape)
+    print("ARIMA predictions shape:", pred.shape)
     return pred
