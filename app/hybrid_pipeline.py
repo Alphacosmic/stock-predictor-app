@@ -25,22 +25,22 @@ def train_hybrid_model(df):
         X, y, test_size=0.2, shuffle=False
     )
 
-    print("🚀 Training XGBoost model...")
+    print("Training XGBoost model...")
     xgb_model = XGBClassifier(use_label_encoder=False, eval_metric='logloss')
     xgb_model.fit(X_train, y_train)
     y_pred = xgb_model.predict(X_test)
 
-    print("📊 XGBoost Classification Report:")
+    print("XGBoost Classification Report:")
     print(classification_report(y_test, y_pred))
 
-    print("🔮 Training ARIMA model for Close price forecasting...")
+    print("Training ARIMA model for Close price forecasting...")
     arima_model = ARIMA(df['Close'], order=(5, 1, 0))
     arima_fit = arima_model.fit()
     arima_pred = arima_fit.predict(start=len(df) - len(y_test), end=len(df) - 1, typ='levels')
 
-    print("📈 ARIMA Forecast (last 5):")
+    print("ARIMA Forecast (last 5):")
     print(arima_pred.tail(5))
-    print("📉 Actual Close Prices (last 5):")
+    print("Actual Close Prices (last 5):")
     print(df['Close'].tail(5))
 
     os.makedirs("outputs", exist_ok=True)
@@ -51,10 +51,10 @@ def train_hybrid_model(df):
         'ARIMA_Forecast': arima_pred.values
     })
     results_df.to_csv("outputs/hybrid_model_results.csv", index=False)
-    print("✅ Results saved to outputs/hybrid_model_results.csv")
+    print("Results saved to outputs/hybrid_model_results.csv")
 
     # ---------- VISUALIZATION ----------
-    print("📊 Generating plots...")
+    print("Generating plots...")
 
     # 1. ARIMA Forecast vs Actual Close
     plt.figure(figsize=(12, 5))
