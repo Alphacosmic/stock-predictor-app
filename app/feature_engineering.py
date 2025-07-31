@@ -10,13 +10,13 @@ def add_technical_indicators(df):
     return df
 
 def enrich_features(df, fundamentals=None, arima_pred=None):
-    print("📊 Original df shape:", df.shape)
+    print("Original df shape:", df.shape)
 
     df = add_technical_indicators(df)
     df = add_candlestick_patterns(df)
 
     if fundamentals is not None:
-        print("🧮 Adding fundamentals:", fundamentals)
+        print("Adding fundamentals:", fundamentals)
         for key, value in fundamentals.items():
             df[key] = value
 
@@ -25,9 +25,9 @@ def enrich_features(df, fundamentals=None, arima_pred=None):
         df['arima_pred'] = arima_pred
 
     # TEMP: Show missing data before dropping
-    print("🧼 Nulls before dropna:\n", df.isnull().sum())
+    print("Nulls before dropna:\n", df.isnull().sum())
 
     df.dropna(inplace=True)
-    print("✅ Enriched feature shape after dropna:", df.shape)
+    print("Enriched feature shape after dropna:", df.shape)
     
     return df
