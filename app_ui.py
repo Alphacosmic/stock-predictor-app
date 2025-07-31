@@ -6,7 +6,7 @@ from app.hybrid_pipeline import train_hybrid_model
 import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Stock Predictor", layout="wide")
-st.title("📈 Stock Market Trend Predictor (XGBoost + ARIMA)")
+st.title("Stock Market Trend Predictor (XGBoost + ARIMA)")
 
 # Upload CSV or use default
 st.sidebar.header("Upload CSV or use AAPL example")
@@ -36,7 +36,7 @@ if os.path.exists(results_path):
     results = pd.read_csv(results_path)
     results['Date'] = pd.to_datetime(results['Date'])
 
-    st.subheader("📊 ARIMA Forecast vs Actual Close Price")
+    st.subheader("ARIMA Forecast vs Actual Close Price")
     fig1, ax1 = plt.subplots(figsize=(12, 5))
     ax1.plot(results['Date'], results['Actual_Close'], label='Actual Close', color='blue')
     ax1.plot(results['Date'], results['ARIMA_Forecast'], label='ARIMA Forecast', color='orange')
@@ -46,7 +46,7 @@ if os.path.exists(results_path):
     ax1.grid(True)
     st.pyplot(fig1)
 
-    st.subheader("📈 Predicted Trend (XGBoost)")
+    st.subheader("Predicted Trend (XGBoost)")
     fig2, ax2 = plt.subplots(figsize=(12, 3))
     ax2.plot(results['Date'], results['Predicted_Trend'], drawstyle='steps-post', label='Predicted Trend')
     ax2.set_xlabel("Date")
@@ -55,7 +55,7 @@ if os.path.exists(results_path):
     ax2.grid(True)
     st.pyplot(fig2)
 
-    st.subheader("📄 Output Table")
+    st.subheader("Output Table")
     st.dataframe(results.tail(10))
 else:
     st.error("No results found. Please check if the model ran successfully.")
