@@ -9,7 +9,7 @@ from xgboost import XGBClassifier
 def train_model(ticker):
     df = pd.read_csv(f"data/{ticker}_features.csv")
 
-    # ✅ Merge fundamentals
+    # Merge fundamentals
     fundamentals = pd.read_csv(f"data/{ticker}_fundamentals.csv")
     for col in fundamentals.columns:
         if col != "symbol":
@@ -27,7 +27,7 @@ def train_model(ticker):
     df.dropna(inplace=True)
     df = df[df['target'] != 0.0]
 
-    # ✅ Drop non-numeric columns before modeling
+    # Drop non-numeric columns before modeling
     non_numeric_cols = df.select_dtypes(include=['object']).columns
     df = df.drop(columns=non_numeric_cols)
 
