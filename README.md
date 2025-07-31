@@ -1,8 +1,8 @@
-# 📈 Stock Predictor App
+# Stock Predictor App
 
 A hybrid stock prediction tool that combines XGBoost classification with ARIMA time-series forecasting to help visualize and predict short-term trends in stock prices.
 
-## 🔍 Features
+## Features
 
 - Upload your own CSV or select from default stock data (like AAPL)
 - Visualizes technical indicators and candlestick patterns
@@ -12,7 +12,7 @@ A hybrid stock prediction tool that combines XGBoost classification with ARIMA t
 - Downloadable results
 - Built with Streamlit for web deployment
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - Python 3.11+
 - pandas, numpy, matplotlib, seaborn
@@ -20,7 +20,7 @@ A hybrid stock prediction tool that combines XGBoost classification with ARIMA t
 - Streamlit
 - TA-Lib (via pandas-ta)
 
-## 🧪 Usage
+## Usage
 
 ```bash
 # Install requirements
